@@ -1,0 +1,256 @@
+% =========================
+% Autor: Michael Mierke
+% Erstellt: 08.03.2018
+% Aktualisiert: 23.10.2018
+% =========================
+\documentclass[%
+    a4paper,             % Papierformat
+    %oneside,            % einseitiger Druck
+    %twoside,            % zweiseitiger Druck
+    12pt,                % Schriftgröße
+    %onecolumn,          % einspaltiger Text
+    %twocolumn,          % zweispaltiger Text
+    %openright,          % Kapitel dürfen nur auf einer rechten Seite beginnen
+    %openany,            % Kapitel dürfen rechts oder links beginnen
+    parskip=half,        % eine halbe Zeile Abstand zw. Absätzen
+    numbers=noendperiod, % Kapitelnr. nach Unterkapitel deaktivieren
+    bibliography=totoc,  % Bibliographie im Inhaltsverzeichnis
+    listof=totoc         % Tabellenvz., etc im Inhaltsverzeichnis
+    ]{scrreprt}          % KOMA-Script
+
+% ===================================
+% Importieren der notwendigen Pakete
+% ===================================
+\usepackage[automark, headsepline]{scrlayer-scrpage}    % Kopf- und Fußzeilen
+\usepackage[utf8]{inputenc}% richtiges Encoding des dokuments (für ß, üöä, etc.)
+\usepackage[T1]{fontenc}      % Kodierung in der pdf-Datei
+\usepackage[german, english, ngerman]{babel}   % neue deutsche Rechtschreibung
+\usepackage{helvet}           % Schriftart: serifenlos
+\usepackage{microtype}  % Verbesserung der Silbentrennung und Randausgleich
+% Layout der Seite
+\usepackage[left=25mm,right=25mm,top=30mm,bottom=20mm]{geometry}
+% Zeilenabstände
+\usepackage[onehalfspacing]{setspace}
+% Grafiken: PDF, GIF, PNG
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup{format=hang,font=small,labelfont=bf,
+labelsep=colon,justification=justified,singlelinecheck=false}
+% Pakete für Blindtexte
+\usepackage{lipsum}
+\usepackage{blindtext}
+\usepackage{xcolor}
+% Abkürzungen
+\usepackage[printonlyused]{acronym}
+% \usepackage{glossaries}
+% Hypertextmarks & Metadaten
+\usepackage{hyperref}
+% Anpassbare Enumerates/Itemizes
+\usepackage{enumitem}
+\usepackage{csquotes}
+% keine widows bzw. clubs
+\usepackage[all]{nowidow}
+% Pakete für richtige Darstellung der Mathematik
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% ========================================================
+% Einstellungen für Literaturverzeichnis und Zitationsstil
+% ========================================================
+
+\usepackage[%
+    backend=biber,
+    style=alphabetic,
+    language=autobib,
+    autolang=other,     % Unterscheidung Volume und Jahrgang
+    giveninits=true,
+    maxnames=3,
+    maxalphanames=1,
+    uniquelist=false,
+    doi=false
+    ]{biblatex}
+\addbibresource{thesis.bib}
+\defbibheading{lit}{\addchap{Literaturverzeichnis}}
+
+% ============================================
+% Anpassungen für Autoren, Title und Publisher
+% ============================================
+
+\renewcommand*{\multinamedelim}{\addsemicolon\space} % Trenner zwischen den Namen ein Semikolon
+\renewcommand*{\finalnamedelim}{\addsemicolon\space}
+\renewcommand *{\labelnamepunct}{\addcolon\space} % Doppelpunkt nach dem letzten Namen
+\renewcommand*{\labelalphaothers}{} % entfernt das "+" in der Literaturangabe bei mehreren Autorenthat
+\DefineBibliographyStrings{ngerman}{ %ersetzt u.a. with et al. bei mehr als 3 Autoren
+     andothers = {{et\,al\adddot}},
+  }
+
+% Komma zwischen Publisher und Datum entfernen
+\renewbibmacro*{publisher+location+date}{%
+  \printlist{location}%
+  \iflistundef{publisher}
+    {\setunit*{\space}}
+    {\setunit*{\addcolon\space}}%
+  \printlist{publisher}%
+  \setunit*{\space}%
+  \usebibmacro{date}%
+  \newunit}
+
+% Austausch Vor- und Nachname
+\DeclareNameAlias{default}{last-first}
+
+% Anführungszeichen des Titels entfernen
+\DeclareFieldFormat
+  [book,article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+  {title}{#1\isdot}
+
+% ===========================================
+% Anpassungen für @article und @inproceedings
+% ===========================================
+
+% Unterscheidung Deutsch und Englisch (The short answer is what others have said, % starts a comment that goes to the end of the line. The normal effect is that it doesn't insert the space (or a \par) from the newline.)
+\DefineBibliographyExtras{ngerman}{%
+  \DeclareFieldFormat[article]{volume}{#1.\addspace Jg.\addspace(\printfield{year}),}%
+  \DeclareFieldFormat[inproceedings]{volume}{#1.\addspace Jg.,}%
+  \DeclareFieldFormat[article,inproceedings]{issue}{H.\addspace#1}%
+}
+\DefineBibliographyExtras{english}{%
+  \DeclareFieldFormat[article,inproceedings]{volume}{vol.\addspace#1\addspace(\printfield{year}),}%
+\DeclareFieldFormat[article]{issue}{no.\addspace#1}%
+}
+
+% Journaltitle bzw. Booktitle nicht kursiv
+\DeclareFieldFormat[article]{journaltitle}{#1\addcomma}
+\DeclareFieldFormat[inproceedings]{booktitle}{#1\addcomma}
+
+% kein Journaltitle anzeigen wenn dieses nicht gegeben wird. (Entfernt das redundante "In:"
+% todo
+
+% Publisher wird bei Artikeln standardmäßig nicht angegeben, Lösung über Series
+\DeclareFieldFormat[article,inproceedings]{series}{#1\addcomma}
+
+% Entfernt Klammern [parens] bei Datumsangabe und löscht die Jahresangabe
+\renewbibmacro*{issue+date}{%
+  \printtext[]{%
+    \iffieldundef{issue}
+      {\printdate}
+      {\printfield{issue}%
+       \setunit{\addspace}%
+       }}%
+  \newunit}
+
+% Punkt durch Komma ersetzen hinter der Auflage
+\DeclareFieldFormat{edition}{%
+    \ifinteger{#1}
+      {\mkbibordedition{#1}~\bibstring{edition}}
+      {#1\isdot},}
+
+% Macros damit das Komma hinter der Locations verschwindet
+\newbibmacro*{pubinstorg+location+date}[1]{%
+    \setunit{\addspace}%
+    \printlist{#1}%
+    \setunit*{\addcomma\space}%
+    \printlist{location}%
+    \setunit{\addspace}%
+    \usebibmacro{date}}%
+
+\renewbibmacro*{publisher+location+date}{\usebibmacro{pubinstorg+location+date}{publisher}}
+\renewbibmacro*{institution+location+date}{\usebibmacro{pubinstorg+location+date}{institution}}
+\renewbibmacro*{organization+location+date}{\usebibmacro{pubinstorg+location+date}{organization}}
+
+% Anpassungen für Richtigkeit der Onlinequellen
+\DeclareFieldFormat{url}{\newline\url{#1}\addcomma}
+\DeclareFieldFormat{urldate}{Zuletzt aufgerufen am #1}
+\DeclareFieldFormat[online]{title}{#1\addcomma}
+
+% =====================================
+% Einstellungen für Kopf- und Fußzeilen
+% =====================================
+\pagestyle{scrheadings}
+\setkomafont{pagehead}{\normalfont\fontsize{10pt}{12pt}}
+\setkomafont{pagenumber}{\fontsize{10pt}{12pt}}
+\ihead{\leftmark}                               % Kopfzeile innen
+\ohead{Seite \pagemark}                         % Kopfzeile außen
+\chead{}                                        % Kopfzeile mitte
+\cfoot[]{}                                      % Fußzeile leer
+
+\renewcommand*{\chaptermarkformat}{}            % Kopfzeile ohne Kapitelnummer
+\renewcommand*{\indexpagestyle}{scrheadings}    % Style der Indexseite
+\renewcommand*{\chapterpagestyle}{scrheadings}  % Style der ersten Seite eines Chapters
+
+%------------ Einstellungen der Überschriften ------------
+% Schriftgröße der Überschriften aller Ebenen
+\setkomafont{chapter}{\fontsize{14pt}{18pt}\selectfont\bfseries}
+\setkomafont{section}{\fontsize{13pt}{16pt}\selectfont\bfseries}
+\setkomafont{subsection}{\fontsize{12pt}{16pt}\selectfont\bfseries}
+\setkomafont{subsubsection}{\fontsize{12pt}{16pt}\selectfont}
+
+% Abstand vor und nach den Überschriften
+\RedeclareSectionCommand[%
+  beforeskip=24pt,
+  afterskip=8pt
+  ]{chapter}
+\RedeclareSectionCommand[%
+  beforeskip=24pt,
+  afterskip=8pt
+  ]{section}
+\RedeclareSectionCommand[%
+  beforeskip=24pt,
+  afterskip=8pt
+  ]{subsection}
+\RedeclareSectionCommand[%
+  beforeskip=24pt,
+  afterskip=8pt
+  ]{subsubsection}
+
+% hängender Einzug bei 1,5 cm -> Kapitelname aller Ebenen untereinander
+\newlength{\headingindent}
+\setlength{\headingindent}{1.5cm}
+\renewcommand*{\chapterformat}{%
+  \makebox[\headingindent][l]{\thechapter\autodot}%
+}
+\renewcommand*{\sectionformat}{%
+  \makebox[\headingindent][l]{\thesection\autodot}%
+}
+\renewcommand*{\subsectionformat}{%
+  \makebox[\headingindent][l]{\thesubsection\autodot}%
+}
+
+% Anpassung der Aufzählungsebenen
+\renewcommand{\labelitemi}{---}
+\renewcommand{\labelitemii}{---}
+
+\renewcommand{\familydefault}{\sfdefault}   % Schriftart des gesamten Dokuments auf serifenlos
+
+%------------ Einstellungen der Metadaten (Deckblatt etc.) ------------
+\newcommand{\pdftitel}{Titel der Arbeit}
+\newcommand{\arbeit}{Masterarbeit}
+\newcommand{\titel}{\pdftitel}
+\newcommand{\autor}{Autor der Arbeit}
+\newcommand{\martrikelnr}{Matrikelnummer}
+\newcommand{\abschluss}{Master of Science, etc.}
+\newcommand{\fakultaet}{Fakultät für Maschinenbau}
+\newcommand{\luh}{Leibniz Universität Hannover}
+\newcommand{\pruefer}{}
+\newcommand{\betreuer}{}
+
+\date{\today}
+\begin{document}
+\input{ads/titlepage.tex}
+\newpage\thispagestyle{empty}\quad\newpage % Leere Seite
+% Umstellung auf römische Seitenzahlen für toc, lof, lot
+\renewcommand{\thepage}{\Roman{page}}
+\input{ads/abstract.tex}
+\tableofcontents
+\listoffigures
+\listoftables
+\include{ads/acronyms}
+% Umstellung auf arabische Seitenzahlen
+\renewcommand{\thepage}{\arabic{page}}\setcounter{page}{1}
+\input{content/einleitung}
+Testdokument laut \cite{hage1991}. Und \ac{IoT}.
+Englisches Journal: \cite{Muller}a
+Deutsche Zeitschrift: \cite{Mullerb}
+Buch: \cite{Ciem04}.
+\printbibliography[heading=lit]
+\input{ads/eidesstattliche_erklaerung.tex}
+\end{document}

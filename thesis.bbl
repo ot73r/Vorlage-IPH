@@ -1,0 +1,190 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{Ciem04}{article}{}
+      \name{author}{2}{}{%
+        {{hash=ec3e7b888d373dc00e216dcf3a9041a8}{%
+           family={Cieminski},
+           familyi={C\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           prefix={von},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=15ca6fc7c792ff738f7d9d6970dcfdcf}{%
+           family={Nickel},
+           familyi={N\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin}%
+      }
+      \strng{namehash}{4f09a90186bd2649aa7d6f094571fe90}
+      \strng{fullhash}{4f09a90186bd2649aa7d6f094571fe90}
+      \strng{bibnamehash}{4f09a90186bd2649aa7d6f094571fe90}
+      \strng{authorbibnamehash}{4f09a90186bd2649aa7d6f094571fe90}
+      \strng{authornamehash}{4f09a90186bd2649aa7d6f094571fe90}
+      \strng{authorfullhash}{4f09a90186bd2649aa7d6f094571fe90}
+      \field{labelalpha}{Cie04}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1434-1980}
+      \field{issue}{5}
+      \field{journaltitle}{Industrie Management}
+      \field{series}{GITO-Verlag}
+      \field{title}{Beschleunigung des Auftragsdurchlaufs - Engpassorientierte Logistikanalyse bei einem Bauelementehersteller}
+      \field{volume}{20}
+      \field{year}{2004}
+      \field{pages}{43\bibrangedash 46}
+      \range{pages}{4}
+    \endentry
+    \entry{hage1991}{book}{}
+      \name{author}{2}{}{%
+        {{hash=340c04bf0d05579e01e13e7be6554a4e}{%
+           family={Hagen},
+           familyi={H\bibinitperiod},
+           given={Hans},
+           giveni={H\bibinitperiod}}}%
+        {{hash=507ae587501d02dc7a8f12b81393b789}{%
+           family={Roller},
+           familyi={R\bibinitperiod},
+           given={Dieter},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{85661d3d6d77577f4c79ebc7ca0461a8}
+      \strng{fullhash}{85661d3d6d77577f4c79ebc7ca0461a8}
+      \strng{bibnamehash}{85661d3d6d77577f4c79ebc7ca0461a8}
+      \strng{authorbibnamehash}{85661d3d6d77577f4c79ebc7ca0461a8}
+      \strng{authornamehash}{85661d3d6d77577f4c79ebc7ca0461a8}
+      \strng{authorfullhash}{85661d3d6d77577f4c79ebc7ca0461a8}
+      \field{labelalpha}{Hag91}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{isbn}{3642764061}
+      \field{title}{Geometric Modeling}
+      \field{year}{1991}
+    \endentry
+    \entry{Muller}{article}{}
+      \name{author}{4}{}{%
+        {{hash=a8812aae7df91b19171430030e5594cb}{%
+           family={M{ü}ller},
+           familyi={M\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=62a215e68fce0e7e36dd779ae0b4fd95}{%
+           family={M{ö}ller},
+           familyi={M\bibinitperiod},
+           given={Andi},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b19d09792e299ff7b1358745f8dd34c5}{%
+           family={M{ä}ller},
+           familyi={M\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+        {{hash=78c7a3192c5bcb575f0e42fae1692089}{%
+           family={Stra{ß}},
+           familyi={S\bibinitperiod},
+           given={R{é}n{é}},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{b885bb32266814c871d9ac131aa03513}
+      \strng{fullhash}{2da92c0164c514d34323d85de585ad74}
+      \strng{bibnamehash}{b885bb32266814c871d9ac131aa03513}
+      \strng{authorbibnamehash}{b885bb32266814c871d9ac131aa03513}
+      \strng{authornamehash}{b885bb32266814c871d9ac131aa03513}
+      \strng{authorfullhash}{2da92c0164c514d34323d85de585ad74}
+      \field{labelalpha}{Mül09}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extraalpha}{1}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{2}
+      \field{journaltitle}{Testzeitschrift}
+      \field{langid}{ngerman}
+      \field{pagination}{page}
+      \field{subtitle}{Testuntertitel}
+      \field{title}{Testtitel}
+      \field{titleaddon}{Testtitelzusatz}
+      \field{volume}{23}
+      \field{year}{2009}
+      \field{pages}{23\bibrangedash 56}
+      \range{pages}{34}
+    \endentry
+    \entry{Mullerb}{article}{}
+      \name{author}{4}{}{%
+        {{hash=a8812aae7df91b19171430030e5594cb}{%
+           family={M{ü}ller},
+           familyi={M\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=62a215e68fce0e7e36dd779ae0b4fd95}{%
+           family={M{ö}ller},
+           familyi={M\bibinitperiod},
+           given={Andi},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b19d09792e299ff7b1358745f8dd34c5}{%
+           family={M{ä}ller},
+           familyi={M\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+        {{hash=78c7a3192c5bcb575f0e42fae1692089}{%
+           family={Stra{ß}},
+           familyi={S\bibinitperiod},
+           given={R{é}n{é}},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{b885bb32266814c871d9ac131aa03513}
+      \strng{fullhash}{2da92c0164c514d34323d85de585ad74}
+      \strng{bibnamehash}{b885bb32266814c871d9ac131aa03513}
+      \strng{authorbibnamehash}{b885bb32266814c871d9ac131aa03513}
+      \strng{authornamehash}{b885bb32266814c871d9ac131aa03513}
+      \strng{authorfullhash}{2da92c0164c514d34323d85de585ad74}
+      \field{labelalpha}{Mül09}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extraalpha}{2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{6}
+      \field{journaltitle}{Testjournal}
+      \field{langid}{english}
+      \field{pagination}{page}
+      \field{subtitle}{Testsubtitle}
+      \field{title}{Testtitle}
+      \field{titleaddon}{Testtitleaddon}
+      \field{volume}{23}
+      \field{year}{2009}
+      \field{pages}{12\bibrangedash 16}
+      \range{pages}{5}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
